@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>DecisionTree API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>DecisionTree</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+import numpy as math
+import pandas as pd
+
+
+def build_records(X, y):
+    &#34;&#34;&#34;Bundels training data with labels in one dataframe to train with it
+
+    Parameters
+    ----------
+    X : pd.DataFrame
+        The training features only
+
+    y : pd.DataFrame or pd.Series
+        The labels of the training data
+
+    Returns
+    -------
+    list
+        one pd.DataFrame bundeled with both training features and labels
+    &#34;&#34;&#34;
+
+    labeled_samples = []
+    if isinstance(X, pd.DataFrame) and isinstance(y, (pd.DataFrame, pd.Series)):
+        labeled_samples = X.copy()
+        labeled_samples[&#34;label&#34;] = y
+    else:
+        raise TypeError(f&#34;&#34;&#34;Unsupported data type of X :{type(X)} or Y : {type(y)}
+                consider converting it to pd.DataFrame&#34;&#34;&#34;)
+    return labeled_samples
+
+
+def attribute_value(sample, feature):
+    &#34;&#34;&#34;A wrapper method to access a sample feature
+
+    Parameters
+    ----------
+    sample : pd.Series
+        The sample to access
+
+    feature : str
+        The feature name
+
+    Returns
+    -------
+    type(sample[feature])
+        sample feature value is returned if found otherwise error is raised
+    &#34;&#34;&#34;
+    if isinstance(sample, pd.Series):
+        return sample[feature]
+    else: 
+        raise TypeError(f&#34;&#34;&#34;Unsupported sample type {type(sample)}
+                consider converting it to pd.Series&#34;&#34;&#34;)
+
+
+def dataset_features_values(dataset):
+    &#34;&#34;&#34;A dictionary of all features values counts is formed form the whole dataset
+    for exmaple {
+                    &#34;A&#34;:{&#34;a&#34;:2, &#34;b&#34;:5},
+                    &#34;B&#34;:{&#34;a&#34;:3, &#34;c&#34;:15},
+                    ...
+                }
+    so the dataset has 2 features (A, B). The values of feature A are (a, b)
+    and their corresponding values are (2, 5), and similarly for B.
+
+    Parameters
+    ----------
+    sample : pd.DataFrame
+        The dataset to get its features values count
+
+    Returns
+    -------
+    dict(str: dict(str: int))
+        dictionary of dictionary of values count
+    &#34;&#34;&#34;
+    if isinstance(dataset, pd.DataFrame):
+        features_values = dict()
+        for feature in list(dataset):
+            features_values[feature] = get_feature_values(dataset, feature)
+        return features_values
+    else: 
+        raise TypeError(f&#34;Unsupported sample type {type(dataset)}\
+                consider converting it to pd.DataFrame&#34;)
+
+
+def get_feature_values(data, feature):
+    &#34;&#34;&#34;A dictionary of feature values counts is formed form the whole dataset
+    feature column for exmaple {&#34;a&#34;:2, &#34;b&#34;:5}. so the dataset has feature column
+    with possible values (a, b) with number of occurrences (2, 5) respectivly
+
+    Parameters
+    ----------
+    sample : pd.DataFrame
+        The dataset to get its feature values count
+
+    Returns
+    -------
+    dict(str: int)
+        dictionary of values count ( number of occurrences ) of feature column in dataset
+    &#34;&#34;&#34;
+    if isinstance(data, pd.DataFrame):
+        if feature not in list(data): return dict()
+        return data[feature].value_counts().to_dict()
+    else: 
+        raise TypeError(f&#34;&#34;&#34;Unsupported sample type {type(data)}
+                consider converting it to pd.DataFrame&#34;&#34;&#34;)
+
+
+def majority_vote(dataset):
+    &#34;&#34;&#34;For a given dataset with label column the label value that appears the 
+    most is returned
+
+    Parameters
+    ----------
+    sample : pd.DataFrame
+        The dataset with label column to apply vote on its labels occurrences
+
+    Returns
+    -------
+    type(label)
+        label that appears the most in label column if exist otherwise error is raised
+    &#34;&#34;&#34;
+    if isinstance(dataset, pd.DataFrame):
+        feature_values = get_feature_values(dataset, &#34;label&#34;)
+        feature_values_zip = zip(feature_values.values(), feature_values.keys())
+        return sorted(feature_values_zip, key = lambda x: (-x[0], x[1]))[0][1]
+    else: 
+        raise TypeError(f&#34;&#34;&#34;Unsupported dataset type {type(dataset)}
+                consider converting it to pd.DataFrame&#34;&#34;&#34;)
+
+
+class TreeNode:
+    &#34;&#34;&#34;The base block in the tree construction
+    &#34;&#34;&#34;
+
+    def __init__(self, data, split_feature = &#34;&#34;):
+        self.data = data
+        self.split_feature = split_feature
+        self.branches = dict()
+
+    def classify(self, sample):
+        &#34;&#34;&#34;For a given sample return the label of it 
+
+        Parameters
+        ----------
+        sample : pd.Series
+            The sample needed to classify
+
+        Returns
+        -------
+        type(label)
+            label that appears the most in label column if exist otherwise error is raised
+        &#34;&#34;&#34;
+        if self.split_feature ==&#34;NO_SPLIT&#34;: 
+            return majority_vote(self.data)
+        value = attribute_value(sample, self.split_feature)
+        return self.branches[value].classify(sample)
+
+    def __eq__(self, other): 
+        if not isinstance(other, TreeNode):
+            return NotImplemented
+
+        return self.data.equals(other.data) and\
+               self.branches == other.branches and\
+               self.split_feature == other.split_feature
+
+    def __repr__(self) -&gt; str:
+        tree_repr = &#34;&#34;
+        tree_repr += f&#34;**{self.split_feature}/{len(self.branches)}**&#34;
+        return tree_repr
+
+
+class DecisionTree:
+    def __init__(self, criterion=&#39;entropy&#39;):
+        self.criterion = criterion
+        self.splitter = criterion
+        self.tree = TreeNode(pd.DataFrame([]))
+        self.features_values = dict()
+
+    def fit(self, X, y):
+        &#34;&#34;&#34;Training on the given data
+
+        Parameters
+        ----------
+        X : pd.DataFrame
+            Training data without labels
+
+        y : pd.DataFrame
+            Training data labels
+
+        Returns
+        -------
+        void
+        &#34;&#34;&#34;
+        dataset = build_records(X, y)
+        self.features_values = dataset_features_values(dataset)
+        root_split = self._get_split_feature(dataset, self.criterion)
+        root = TreeNode(dataset, root_split)
+        tree = self._build_tree(root)
+        self.tree = tree
+
+    def predict(self, X):
+        &#34;&#34;&#34;Testing data to predict its labels
+
+        Parameters
+        ----------
+        X : pd.DataFrame
+            Training data without labels
+
+        Returns
+        -------
+        array of labels
+        &#34;&#34;&#34;
+        if isinstance(X, pd.DataFrame):
+            predicted = []
+            for _, sample in X.iterrows():
+                predicted.append(self.tree.classify(sample))
+            return np.array(predicted)
+        else: 
+            raise TypeError(f&#34;Unsupported dataset type {type(X)}\
+                    consider converting it to pd.DataFrame&#34;)
+
+    def _build_tree(self, node):
+        &#34;&#34;&#34;Recursively building tree nodes using information gain for a given root(node)
+
+        Parameters
+        ----------
+        node : TreeNode
+            The root of the tree.
+
+        Returns
+        -------
+        void
+        &#34;&#34;&#34;
+        if node.split_feature == &#34;NO_SPLIT&#34;: return node
+        splited_data = self._split_by(node.data, node.split_feature)
+        branches = dict()
+        for feature_value, data in splited_data:
+            branch_split_feature = self._get_split_feature(data, self.criterion)
+            branch_node = TreeNode(data, branch_split_feature)
+            self._build_tree(branch_node)
+            branches[feature_value] = branch_node
+        node.branches = branches
+        return node
+
+    def _calc_entropy(self, data, attribute = &#34;label&#34;):
+        &#34;&#34;&#34;Entropy claculations of a given dataset using attribute column (label is the default)
+        attribute column
+
+        Parameters
+        ----------
+        data : pd.DataFrame
+            The dataset to claculate entropy on
+
+        attribute(optional) : 
+            The column name to use in entropy claculations
+
+        Returns
+        -------
+        int
+            entropy of the dataset
+        &#34;&#34;&#34;
+        entropy = 0
+        if len(data) == 0: return 0
+        attribute_values = set(self.features_values[attribute].keys())
+        for value in attribute_values:
+            label_probability = len(data[data[attribute] == value])/len(data)
+            if(label_probability == 0): continue
+            entropy -= label_probability * math.log2(label_probability)
+        return entropy
+
+    def _calc_weighted_entropy(self, data, attribute):
+        &#34;&#34;&#34;The weighted entropy of the data set after splitting with attribute column
+        categories.
+
+        Parameters
+        ----------
+        data : pd.DataFrame
+            The dataset with labels (label column included) to claculate entropy on
+
+        attribute : 
+            The feature(column) name to used to split the data depending on its categories
+            (feature values)
+
+        Returns
+        -------
+        int
+            entropy of the dataset
+        &#34;&#34;&#34;
+        conditional_entropy = 0
+        attribute_values = set(self.features_values[attribute].keys())
+        for value in attribute_values:
+            conditional_data = data[data[attribute] == value]
+            conditional_probability = len(conditional_data)/len(data)
+            conditional_entropy += conditional_probability * self._calc_entropy(conditional_data)
+        return conditional_entropy
+
+    def _information_gain(self, dataset ,feature):
+        &#34;&#34;&#34;A spliting criterion used to calculate how good is feature to split dataset using entropy.
+
+        Parameters
+        ----------
+        dataset : pd.DataFrame
+            The dataset with labels (label column included).
+
+        feature : 
+            The feature(column) name to used to split the dataset depending on its categories
+            (feature values)
+
+        Returns
+        -------
+        int
+            how much information we gain from spliting using feature on dataset
+        &#34;&#34;&#34;
+        entropy = self._calc_entropy(dataset)
+        conditional_entropy = self._calc_weighted_entropy(dataset, feature)
+        mutual_information = entropy - conditional_entropy
+        return mutual_information
+
+    def _get_split_feature(self, dataset, criterion = &#34;entropy&#34;):
+        &#34;&#34;&#34;A helper method to return the best feature to split on for a given dataset.
+
+        Parameters
+        ----------
+        dataset : pd.DataFrame
+            The dataset with labels (label column included).
+
+        criterion : str
+            The method used to evalute the split.
+
+        Returns
+        -------
+        str
+            feature name
+        &#34;&#34;&#34;
+        if criterion != &#34;entropy&#34;:
+            raise ValueError(f&#34;Unsupported criterion {criterion} only &#39;entropy&#39; supported&#34;)
+        if isinstance(dataset, pd.DataFrame):
+            split_feature, max_gain = &#34;&#34;, 0
+            features = list(dataset)
+            features.remove(&#34;label&#34;)
+            for feature in features:
+                feature_gain = self._information_gain(dataset, feature)
+                if feature_gain &gt;= max_gain:
+                    split_feature = feature
+                    max_gain = feature_gain
+            return split_feature if max_gain &gt; 0 else &#34;NO_SPLIT&#34;
+
+        else: 
+            raise TypeError(f&#34;&#34;&#34;Unsupported dataset type {type(dataset)}
+                    consider converting it to pd.DataFrame&#34;&#34;&#34;)
+
+
+    def _split_by(self, dataset, split_feature):
+        &#34;&#34;&#34;A helper method to split dataset with &#34;split_feature&#34;
+
+        Parameters
+        ----------
+        dataset : pd.DataFrame
+            The dataset with labels (label column included).
+
+        split_feature : str
+            The feature name to split data on.
+
+        Returns
+        -------
+        list(tuples)
+            list of tuple (&#34;feature value&#34;, splited data)
+        &#34;&#34;&#34;
+        if isinstance(dataset, pd.DataFrame):
+            feature_values = set(self.features_values[split_feature].keys())
+            splits = []
+            for value in feature_values:
+                splited_data = dataset[dataset[split_feature] == value]
+                if(len(splited_data) &gt; 0): splits.append((value, splited_data))
+            return splits
+        else: 
+            raise TypeError(f&#34;&#34;&#34;Unsupported dataset type {type(dataset)}
+                    consider converting it to pd.DataFrame&#34;&#34;&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="DecisionTree.attribute_value"><code class="name flex">
+<span>def <span class="ident">attribute_value</span></span>(<span>sample, feature)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A wrapper method to access a sample feature</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample</code></strong> :&ensp;<code>pd.Series</code></dt>
+<dd>The sample to access</dd>
+<dt><strong><code>feature</code></strong> :&ensp;<code>str</code></dt>
+<dd>The feature name</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>type(sample[feature])</code></dt>
+<dd>sample feature value is returned if found otherwise error is raised</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def attribute_value(sample, feature):
+    &#34;&#34;&#34;A wrapper method to access a sample feature
+
+    Parameters
+    ----------
+    sample : pd.Series
+        The sample to access
+
+    feature : str
+        The feature name
+
+    Returns
+    -------
+    type(sample[feature])
+        sample feature value is returned if found otherwise error is raised
+    &#34;&#34;&#34;
+    if isinstance(sample, pd.Series):
+        return sample[feature]
+    else: 
+        raise TypeError(f&#34;&#34;&#34;Unsupported sample type {type(sample)}
+                consider converting it to pd.Series&#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="DecisionTree.build_records"><code class="name flex">
+<span>def <span class="ident">build_records</span></span>(<span>X, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Bundels training data with labels in one dataframe to train with it</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>X</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>The training features only</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>pd.DataFrame</code> or <code>pd.Series</code></dt>
+<dd>The labels of the training data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>one pd.DataFrame bundeled with both training features and labels</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build_records(X, y):
+    &#34;&#34;&#34;Bundels training data with labels in one dataframe to train with it
+
+    Parameters
+    ----------
+    X : pd.DataFrame
+        The training features only
+
+    y : pd.DataFrame or pd.Series
+        The labels of the training data
+
+    Returns
+    -------
+    list
+        one pd.DataFrame bundeled with both training features and labels
+    &#34;&#34;&#34;
+
+    labeled_samples = []
+    if isinstance(X, pd.DataFrame) and isinstance(y, (pd.DataFrame, pd.Series)):
+        labeled_samples = X.copy()
+        labeled_samples[&#34;label&#34;] = y
+    else:
+        raise TypeError(f&#34;&#34;&#34;Unsupported data type of X :{type(X)} or Y : {type(y)}
+                consider converting it to pd.DataFrame&#34;&#34;&#34;)
+    return labeled_samples</code></pre>
+</details>
+</dd>
+<dt id="DecisionTree.dataset_features_values"><code class="name flex">
+<span>def <span class="ident">dataset_features_values</span></span>(<span>dataset)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A dictionary of all features values counts is formed form the whole dataset
+for exmaple {
+"A":{"a":2, "b":5},
+"B":{"a":3, "c":15},
+&hellip;
+}
+so the dataset has 2 features (A, B). The values of feature A are (a, b)
+and their corresponding values are (2, 5), and similarly for B.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>The dataset to get its features values count</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict(str: dict(str: int))</code></dt>
+<dd>dictionary of dictionary of values count</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dataset_features_values(dataset):
+    &#34;&#34;&#34;A dictionary of all features values counts is formed form the whole dataset
+    for exmaple {
+                    &#34;A&#34;:{&#34;a&#34;:2, &#34;b&#34;:5},
+                    &#34;B&#34;:{&#34;a&#34;:3, &#34;c&#34;:15},
+                    ...
+                }
+    so the dataset has 2 features (A, B). The values of feature A are (a, b)
+    and their corresponding values are (2, 5), and similarly for B.
+
+    Parameters
+    ----------
+    sample : pd.DataFrame
+        The dataset to get its features values count
+
+    Returns
+    -------
+    dict(str: dict(str: int))
+        dictionary of dictionary of values count
+    &#34;&#34;&#34;
+    if isinstance(dataset, pd.DataFrame):
+        features_values = dict()
+        for feature in list(dataset):
+            features_values[feature] = get_feature_values(dataset, feature)
+        return features_values
+    else: 
+        raise TypeError(f&#34;Unsupported sample type {type(dataset)}\
+                consider converting it to pd.DataFrame&#34;)</code></pre>
+</details>
+</dd>
+<dt id="DecisionTree.get_feature_values"><code class="name flex">
+<span>def <span class="ident">get_feature_values</span></span>(<span>data, feature)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A dictionary of feature values counts is formed form the whole dataset
+feature column for exmaple {"a":2, "b":5}. so the dataset has feature column
+with possible values (a, b) with number of occurrences (2, 5) respectivly</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>The dataset to get its feature values count</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict(str: int)</code></dt>
+<dd>dictionary of values count ( number of occurrences ) of feature column in dataset</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_feature_values(data, feature):
+    &#34;&#34;&#34;A dictionary of feature values counts is formed form the whole dataset
+    feature column for exmaple {&#34;a&#34;:2, &#34;b&#34;:5}. so the dataset has feature column
+    with possible values (a, b) with number of occurrences (2, 5) respectivly
+
+    Parameters
+    ----------
+    sample : pd.DataFrame
+        The dataset to get its feature values count
+
+    Returns
+    -------
+    dict(str: int)
+        dictionary of values count ( number of occurrences ) of feature column in dataset
+    &#34;&#34;&#34;
+    if isinstance(data, pd.DataFrame):
+        if feature not in list(data): return dict()
+        return data[feature].value_counts().to_dict()
+    else: 
+        raise TypeError(f&#34;&#34;&#34;Unsupported sample type {type(data)}
+                consider converting it to pd.DataFrame&#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="DecisionTree.majority_vote"><code class="name flex">
+<span>def <span class="ident">majority_vote</span></span>(<span>dataset)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>For a given dataset with label column the label value that appears the
+most is returned</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>The dataset with label column to apply vote on its labels occurrences</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>type(label)</code></dt>
+<dd>label that appears the most in label column if exist otherwise error is raised</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def majority_vote(dataset):
+    &#34;&#34;&#34;For a given dataset with label column the label value that appears the 
+    most is returned
+
+    Parameters
+    ----------
+    sample : pd.DataFrame
+        The dataset with label column to apply vote on its labels occurrences
+
+    Returns
+    -------
+    type(label)
+        label that appears the most in label column if exist otherwise error is raised
+    &#34;&#34;&#34;
+    if isinstance(dataset, pd.DataFrame):
+        feature_values = get_feature_values(dataset, &#34;label&#34;)
+        feature_values_zip = zip(feature_values.values(), feature_values.keys())
+        return sorted(feature_values_zip, key = lambda x: (-x[0], x[1]))[0][1]
+    else: 
+        raise TypeError(f&#34;&#34;&#34;Unsupported dataset type {type(dataset)}
+                consider converting it to pd.DataFrame&#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="DecisionTree.DecisionTree"><code class="flex name class">
+<span>class <span class="ident">DecisionTree</span></span>
+<span>(</span><span>criterion='entropy')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DecisionTree:
+    def __init__(self, criterion=&#39;entropy&#39;):
+        self.criterion = criterion
+        self.splitter = criterion
+        self.tree = TreeNode(pd.DataFrame([]))
+        self.features_values = dict()
+
+    def fit(self, X, y):
+        &#34;&#34;&#34;Training on the given data
+
+        Parameters
+        ----------
+        X : pd.DataFrame
+            Training data without labels
+
+        y : pd.DataFrame
+            Training data labels
+
+        Returns
+        -------
+        void
+        &#34;&#34;&#34;
+        dataset = build_records(X, y)
+        self.features_values = dataset_features_values(dataset)
+        root_split = self._get_split_feature(dataset, self.criterion)
+        root = TreeNode(dataset, root_split)
+        tree = self._build_tree(root)
+        self.tree = tree
+
+    def predict(self, X):
+        &#34;&#34;&#34;Testing data to predict its labels
+
+        Parameters
+        ----------
+        X : pd.DataFrame
+            Training data without labels
+
+        Returns
+        -------
+        array of labels
+        &#34;&#34;&#34;
+        if isinstance(X, pd.DataFrame):
+            predicted = []
+            for _, sample in X.iterrows():
+                predicted.append(self.tree.classify(sample))
+            return np.array(predicted)
+        else: 
+            raise TypeError(f&#34;Unsupported dataset type {type(X)}\
+                    consider converting it to pd.DataFrame&#34;)
+
+    def _build_tree(self, node):
+        &#34;&#34;&#34;Recursively building tree nodes using information gain for a given root(node)
+
+        Parameters
+        ----------
+        node : TreeNode
+            The root of the tree.
+
+        Returns
+        -------
+        void
+        &#34;&#34;&#34;
+        if node.split_feature == &#34;NO_SPLIT&#34;: return node
+        splited_data = self._split_by(node.data, node.split_feature)
+        branches = dict()
+        for feature_value, data in splited_data:
+            branch_split_feature = self._get_split_feature(data, self.criterion)
+            branch_node = TreeNode(data, branch_split_feature)
+            self._build_tree(branch_node)
+            branches[feature_value] = branch_node
+        node.branches = branches
+        return node
+
+    def _calc_entropy(self, data, attribute = &#34;label&#34;):
+        &#34;&#34;&#34;Entropy claculations of a given dataset using attribute column (label is the default)
+        attribute column
+
+        Parameters
+        ----------
+        data : pd.DataFrame
+            The dataset to claculate entropy on
+
+        attribute(optional) : 
+            The column name to use in entropy claculations
+
+        Returns
+        -------
+        int
+            entropy of the dataset
+        &#34;&#34;&#34;
+        entropy = 0
+        if len(data) == 0: return 0
+        attribute_values = set(self.features_values[attribute].keys())
+        for value in attribute_values:
+            label_probability = len(data[data[attribute] == value])/len(data)
+            if(label_probability == 0): continue
+            entropy -= label_probability * math.log2(label_probability)
+        return entropy
+
+    def _calc_weighted_entropy(self, data, attribute):
+        &#34;&#34;&#34;The weighted entropy of the data set after splitting with attribute column
+        categories.
+
+        Parameters
+        ----------
+        data : pd.DataFrame
+            The dataset with labels (label column included) to claculate entropy on
+
+        attribute : 
+            The feature(column) name to used to split the data depending on its categories
+            (feature values)
+
+        Returns
+        -------
+        int
+            entropy of the dataset
+        &#34;&#34;&#34;
+        conditional_entropy = 0
+        attribute_values = set(self.features_values[attribute].keys())
+        for value in attribute_values:
+            conditional_data = data[data[attribute] == value]
+            conditional_probability = len(conditional_data)/len(data)
+            conditional_entropy += conditional_probability * self._calc_entropy(conditional_data)
+        return conditional_entropy
+
+    def _information_gain(self, dataset ,feature):
+        &#34;&#34;&#34;A spliting criterion used to calculate how good is feature to split dataset using entropy.
+
+        Parameters
+        ----------
+        dataset : pd.DataFrame
+            The dataset with labels (label column included).
+
+        feature : 
+            The feature(column) name to used to split the dataset depending on its categories
+            (feature values)
+
+        Returns
+        -------
+        int
+            how much information we gain from spliting using feature on dataset
+        &#34;&#34;&#34;
+        entropy = self._calc_entropy(dataset)
+        conditional_entropy = self._calc_weighted_entropy(dataset, feature)
+        mutual_information = entropy - conditional_entropy
+        return mutual_information
+
+    def _get_split_feature(self, dataset, criterion = &#34;entropy&#34;):
+        &#34;&#34;&#34;A helper method to return the best feature to split on for a given dataset.
+
+        Parameters
+        ----------
+        dataset : pd.DataFrame
+            The dataset with labels (label column included).
+
+        criterion : str
+            The method used to evalute the split.
+
+        Returns
+        -------
+        str
+            feature name
+        &#34;&#34;&#34;
+        if criterion != &#34;entropy&#34;:
+            raise ValueError(f&#34;Unsupported criterion {criterion} only &#39;entropy&#39; supported&#34;)
+        if isinstance(dataset, pd.DataFrame):
+            split_feature, max_gain = &#34;&#34;, 0
+            features = list(dataset)
+            features.remove(&#34;label&#34;)
+            for feature in features:
+                feature_gain = self._information_gain(dataset, feature)
+                if feature_gain &gt;= max_gain:
+                    split_feature = feature
+                    max_gain = feature_gain
+            return split_feature if max_gain &gt; 0 else &#34;NO_SPLIT&#34;
+
+        else: 
+            raise TypeError(f&#34;&#34;&#34;Unsupported dataset type {type(dataset)}
+                    consider converting it to pd.DataFrame&#34;&#34;&#34;)
+
+
+    def _split_by(self, dataset, split_feature):
+        &#34;&#34;&#34;A helper method to split dataset with &#34;split_feature&#34;
+
+        Parameters
+        ----------
+        dataset : pd.DataFrame
+            The dataset with labels (label column included).
+
+        split_feature : str
+            The feature name to split data on.
+
+        Returns
+        -------
+        list(tuples)
+            list of tuple (&#34;feature value&#34;, splited data)
+        &#34;&#34;&#34;
+        if isinstance(dataset, pd.DataFrame):
+            feature_values = set(self.features_values[split_feature].keys())
+            splits = []
+            for value in feature_values:
+                splited_data = dataset[dataset[split_feature] == value]
+                if(len(splited_data) &gt; 0): splits.append((value, splited_data))
+            return splits
+        else: 
+            raise TypeError(f&#34;&#34;&#34;Unsupported dataset type {type(dataset)}
+                    consider converting it to pd.DataFrame&#34;&#34;&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="DecisionTree.DecisionTree.fit"><code class="name flex">
+<span>def <span class="ident">fit</span></span>(<span>self, X, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Training on the given data</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>X</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>Training data without labels</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>Training data labels</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>void</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fit(self, X, y):
+    &#34;&#34;&#34;Training on the given data
+
+    Parameters
+    ----------
+    X : pd.DataFrame
+        Training data without labels
+
+    y : pd.DataFrame
+        Training data labels
+
+    Returns
+    -------
+    void
+    &#34;&#34;&#34;
+    dataset = build_records(X, y)
+    self.features_values = dataset_features_values(dataset)
+    root_split = self._get_split_feature(dataset, self.criterion)
+    root = TreeNode(dataset, root_split)
+    tree = self._build_tree(root)
+    self.tree = tree</code></pre>
+</details>
+</dd>
+<dt id="DecisionTree.DecisionTree.predict"><code class="name flex">
+<span>def <span class="ident">predict</span></span>(<span>self, X)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Testing data to predict its labels</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>X</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>Training data without labels</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>array</code> of <code>labels</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def predict(self, X):
+    &#34;&#34;&#34;Testing data to predict its labels
+
+    Parameters
+    ----------
+    X : pd.DataFrame
+        Training data without labels
+
+    Returns
+    -------
+    array of labels
+    &#34;&#34;&#34;
+    if isinstance(X, pd.DataFrame):
+        predicted = []
+        for _, sample in X.iterrows():
+            predicted.append(self.tree.classify(sample))
+        return np.array(predicted)
+    else: 
+        raise TypeError(f&#34;Unsupported dataset type {type(X)}\
+                consider converting it to pd.DataFrame&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="DecisionTree.TreeNode"><code class="flex name class">
+<span>class <span class="ident">TreeNode</span></span>
+<span>(</span><span>data, split_feature='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The base block in the tree construction</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TreeNode:
+    &#34;&#34;&#34;The base block in the tree construction
+    &#34;&#34;&#34;
+
+    def __init__(self, data, split_feature = &#34;&#34;):
+        self.data = data
+        self.split_feature = split_feature
+        self.branches = dict()
+
+    def classify(self, sample):
+        &#34;&#34;&#34;For a given sample return the label of it 
+
+        Parameters
+        ----------
+        sample : pd.Series
+            The sample needed to classify
+
+        Returns
+        -------
+        type(label)
+            label that appears the most in label column if exist otherwise error is raised
+        &#34;&#34;&#34;
+        if self.split_feature ==&#34;NO_SPLIT&#34;: 
+            return majority_vote(self.data)
+        value = attribute_value(sample, self.split_feature)
+        return self.branches[value].classify(sample)
+
+    def __eq__(self, other): 
+        if not isinstance(other, TreeNode):
+            return NotImplemented
+
+        return self.data.equals(other.data) and\
+               self.branches == other.branches and\
+               self.split_feature == other.split_feature
+
+    def __repr__(self) -&gt; str:
+        tree_repr = &#34;&#34;
+        tree_repr += f&#34;**{self.split_feature}/{len(self.branches)}**&#34;
+        return tree_repr</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="DecisionTree.TreeNode.classify"><code class="name flex">
+<span>def <span class="ident">classify</span></span>(<span>self, sample)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>For a given sample return the label of it </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample</code></strong> :&ensp;<code>pd.Series</code></dt>
+<dd>The sample needed to classify</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>type(label)</code></dt>
+<dd>label that appears the most in label column if exist otherwise error is raised</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def classify(self, sample):
+    &#34;&#34;&#34;For a given sample return the label of it 
+
+    Parameters
+    ----------
+    sample : pd.Series
+        The sample needed to classify
+
+    Returns
+    -------
+    type(label)
+        label that appears the most in label column if exist otherwise error is raised
+    &#34;&#34;&#34;
+    if self.split_feature ==&#34;NO_SPLIT&#34;: 
+        return majority_vote(self.data)
+    value = attribute_value(sample, self.split_feature)
+    return self.branches[value].classify(sample)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="DecisionTree.attribute_value" href="#DecisionTree.attribute_value">attribute_value</a></code></li>
+<li><code><a title="DecisionTree.build_records" href="#DecisionTree.build_records">build_records</a></code></li>
+<li><code><a title="DecisionTree.dataset_features_values" href="#DecisionTree.dataset_features_values">dataset_features_values</a></code></li>
+<li><code><a title="DecisionTree.get_feature_values" href="#DecisionTree.get_feature_values">get_feature_values</a></code></li>
+<li><code><a title="DecisionTree.majority_vote" href="#DecisionTree.majority_vote">majority_vote</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="DecisionTree.DecisionTree" href="#DecisionTree.DecisionTree">DecisionTree</a></code></h4>
+<ul class="">
+<li><code><a title="DecisionTree.DecisionTree.fit" href="#DecisionTree.DecisionTree.fit">fit</a></code></li>
+<li><code><a title="DecisionTree.DecisionTree.predict" href="#DecisionTree.DecisionTree.predict">predict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="DecisionTree.TreeNode" href="#DecisionTree.TreeNode">TreeNode</a></code></h4>
+<ul class="">
+<li><code><a title="DecisionTree.TreeNode.classify" href="#DecisionTree.TreeNode.classify">classify</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

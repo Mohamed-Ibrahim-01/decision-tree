@@ -16,6 +16,8 @@ class TestDecisionTree(unittest.TestCase):
                                      "B":[0, 0, 0, 0, 1, 1, 1, 1],\
                                      "label": [0, 0, 1, 1, 1, 1, 1, 1]})
         self.dataset_features_values = {"A":{1:8},"B":{0:4, 1:4}, "label": {0:2, 1:6}}
+        self._dt = DecisionTree()
+        self._dt.features_values = self.dataset_features_values
 
     def test_build_records(self):
         builded_records = build_records(self.X, self.Y)
@@ -37,27 +39,27 @@ class TestDecisionTree(unittest.TestCase):
         self.assertEqual(b_values, {0: 4, 1: 4})
 
     def test_calc_entropy(self):
-        entropy = calc_entropy(self.dataset, self.dataset_features_values,"label")
+        entropy = self._dt._calc_entropy(self.dataset, "label")
         self.assertAlmostEqual(entropy, 0.811278, places=5)
 
     def test_calc_conditional_entropy(self):
-        a_conditional_entropy = calc_conditional_entropy(self.dataset, self.dataset_features_values, "A")
-        b_conditional_entropy = calc_conditional_entropy(self.dataset, self.dataset_features_values, "B")
+        a_conditional_entropy = self._dt._calc_weighted_entropy(self.dataset, "A")
+        b_conditional_entropy = self._dt._calc_weighted_entropy(self.dataset, "B")
         self.assertAlmostEqual(a_conditional_entropy, 0.811278, places=5)
         self.assertAlmostEqual(b_conditional_entropy, 0.5, places=5)
 
     def test_information_gain(self):
-        a_information_gain = information_gain(self.dataset, self.dataset_features_values, "A")
-        b_information_gain = information_gain(self.dataset, self.dataset_features_values, "B")
+        a_information_gain = self._dt._information_gain(self.dataset, "A")
+        b_information_gain = self._dt._information_gain(self.dataset, "B")
         self.assertAlmostEqual(a_information_gain, 0.0, places=5)
         self.assertAlmostEqual(b_information_gain, 0.311278, places=5)
 
     def test_get_split_feature(self):
-        split_feature = get_split_feature(self.dataset, self.dataset_features_values)
+        split_feature = self._dt._get_split_feature(self.dataset)
         self.assertEqual(split_feature, "B")
 
     def test_split_by(self):
-        splits = split_by(self.dataset, self.dataset_features_values, "B")
+        splits = self._dt._split_by(self.dataset, "B")
         b_split_0 = pd.DataFrame({"A":[1, 1, 1, 1], "B":[0, 0, 0, 0],\
                 "label": [0, 0, 1, 1]}, index=[0, 1, 2, 3] )
         b_split_1 = pd.DataFrame({"A":[1, 1, 1, 1], "B":[1, 1, 1, 1],\
@@ -68,30 +70,17 @@ class TestDecisionTree(unittest.TestCase):
             if value == 1: assert_frame_equal(split_data, b_split_1)
 
     def test_tree_node_ctor(self):
-        pure_data_set = self.dataset[self.dataset["label"] == 1]
-        pure_dataset_features_values = dataset_features_values(pure_data_set)
-        node = TreeNode(self.dataset, self.dataset_features_values)
-        node_0 = TreeNode(self.dataset,self.dataset_features_values, "B")
-        node_1 = TreeNode(pure_data_set, pure_dataset_features_values, "B")
+        node = TreeNode(self.dataset, "")
 
         assert_frame_equal(node.data, self.dataset)
         self.assertEqual(node.split_feature, "")
         self.assertEqual(node.branches, dict())
 
-        self.assertEqual(node_0.is_pure, False)
-        self.assertEqual(node_1.is_pure, True)
-
-    def test_node_tree_is_pure(self):
-        node1 = TreeNode(self.dataset, self.dataset_features_values)
-        node2 = TreeNode(pd.DataFrame([]), self.dataset_features_values)
-        self.assertEqual(node1.is_pure, False)
-        self.assertEqual(node2.is_pure, False)
-
     def test_node_tree_equality_overload(self):
         pure_data_set = self.dataset[self.dataset["label"] == 1]
-        node1 = TreeNode(self.dataset.copy(), self.dataset_features_values)
-        node0 = TreeNode(self.dataset.copy(), self.dataset_features_values)
-        node2 = TreeNode(pure_data_set, self.dataset_features_values)
+        node1 = TreeNode(self.dataset.copy())
+        node0 = TreeNode(self.dataset.copy())
+        node2 = TreeNode(pure_data_set)
 
         self.assertEqual(node0, node1)
 
@@ -103,11 +92,11 @@ class TestDecisionTree(unittest.TestCase):
 
     def test_node_tree_classify(self):
         pure_data_set = self.dataset[self.dataset["label"] == 1]
-        node = TreeNode(pure_data_set, self.dataset_features_values)
+        node = TreeNode(pure_data_set, "NO_SPLIT")
 
-        tree = TreeNode(self.dataset,self.dataset_features_values, "B")
-        branches = {0:TreeNode(self.dataset[self.dataset["B"] == 0],self.dataset_features_values, "NO_SPLIT"),\
-                    1:TreeNode(self.dataset[self.dataset["B"] == 1],self.dataset_features_values, "NO_SPLIT")}
+        tree = TreeNode(self.dataset, "B")
+        branches = {0:TreeNode(self.dataset[self.dataset["B"] == 0], "NO_SPLIT"),\
+                    1:TreeNode(self.dataset[self.dataset["B"] == 1], "NO_SPLIT")}
         tree.branches = branches
 
         self.assertEqual(node.classify(self.dataset.iloc[3]), 1)
@@ -118,30 +107,33 @@ class TestDecisionTree(unittest.TestCase):
 
     def test_DecisionTree_build(self):
         dt = DecisionTree()
-        root_split = get_split_feature(self.dataset, self.dataset_features_values)
-        root = TreeNode(self.dataset, self.dataset_features_values, root_split)
+        dt.features_values = self.dataset_features_values
+        root_split = dt._get_split_feature(self.dataset)
+        root = TreeNode(self.dataset, root_split)
         tree = dt._build_tree(root)
 
-        expexted_tree = TreeNode(self.dataset, self.dataset_features_values,"B")
-        branches = {0:TreeNode(self.dataset[self.dataset["B"] == 0], self.dataset_features_values,"NO_SPLIT"),\
-                    1:TreeNode(self.dataset[self.dataset["B"] == 1], self.dataset_features_values,"NO_SPLIT")}
+        expexted_tree = TreeNode(self.dataset,"B")
+        branches = {0:TreeNode(self.dataset[self.dataset["B"] == 0],"NO_SPLIT"),\
+                    1:TreeNode(self.dataset[self.dataset["B"] == 1],"NO_SPLIT")}
         expexted_tree.branches = branches
 
         self.assertEqual(tree, expexted_tree)
 
     def test_DecisionTree_fit(self):
         dt = DecisionTree()
+        dt.features_values = self.dataset_features_values
         dt.fit(self.X, self.Y)
 
-        expexted_tree = TreeNode(self.dataset, self.dataset_features_values, "B")
-        branches = {0:TreeNode(self.dataset[self.dataset["B"] == 0], self.dataset_features_values,"NO_SPLIT"),\
-                    1:TreeNode(self.dataset[self.dataset["B"] == 1], self.dataset_features_values,"NO_SPLIT")}
+        expexted_tree = TreeNode(self.dataset, "B")
+        branches = {0:TreeNode(self.dataset[self.dataset["B"] == 0],"NO_SPLIT"),\
+                    1:TreeNode(self.dataset[self.dataset["B"] == 1],"NO_SPLIT")}
         expexted_tree.branches = branches
 
         self.assertEqual(dt.tree, expexted_tree)
 
     def test_DecisionTree_predict(self):
         dt = DecisionTree()
+        dt.features_values = self.dataset_features_values
         dt.fit(self.X, self.Y)
         predicted = dt.predict(self.X)
         expected_predictions = np.array([0, 0, 0, 0, 1, 1, 1, 1])
